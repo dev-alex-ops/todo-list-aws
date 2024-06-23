@@ -43,9 +43,8 @@ pipeline {
             steps{
                 sh '''
                     git tag -a RC -m "Release version"
+                    git checkout master
                     git merge develop
-                    git commit -am "Merged develop branch to master"
-                    git push origin master
                 '''
             }
         }

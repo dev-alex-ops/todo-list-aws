@@ -16,6 +16,7 @@ DEFAULT_TIMEOUT = 2  # in secs
 class TestApi(unittest.TestCase):
     
     def setUp(self):
+        print(BASE_URL)
         self.assertIsNotNone(BASE_URL, "URL no configurada")
         self.assertTrue(len(BASE_URL) > 8, "URL no configurada")
 

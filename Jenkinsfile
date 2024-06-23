@@ -32,7 +32,7 @@ pipeline {
         stage('Rest Test') {
             steps{
                 sh '''
-                    export API_ID=$(aws apigateway get-rest-apis --query items[?contains(name, 'staging')].id --output text)
+                    export API_ID=$(aws apigateway get-rest-apis --query items[0].id --output text)
                     export BASE_URL="https://$API_ID.execute-api.us-east-1.amazonaws.com/Prod"
                     python -m pytest test/integration/todoApiTest.py
                 '''

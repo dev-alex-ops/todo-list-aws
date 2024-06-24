@@ -5,6 +5,8 @@ pipeline {
         stage('Get Code') {
             agent any
             steps{
+                sh 'hostname'
+                sh 'whoami'
                 git url: 'https://github.com/dev-alex-ops/todo-list-aws', branch: 'develop'
                 stash includes: '**', name: 'repo'
             }
@@ -13,6 +15,8 @@ pipeline {
         stage('Static Test') {
             agent {label 'Agent1'}
             steps{
+                sh 'hostname'
+                sh 'whoami'
                 unstash 'repo'
                 sh '''
                     python -m flake8 --format=pylint --exit-zero src > flake8.out
@@ -26,6 +30,8 @@ pipeline {
         stage('SAM') {
             agent any
             steps{
+                sh 'hostname'
+                sh 'whoami'
                 sh '''
                     sam build
                     sam validate --region eu-east-1
@@ -37,6 +43,8 @@ pipeline {
         stage('Rest Test') {
             agent {label 'Agent2'}
             steps{
+                sh 'hostname'
+                sh 'whoami'
                 unstash 'repo'
                 sh '''
                     export API_ID=$(aws apigateway get-rest-apis --query items[0].id --output text)
@@ -50,6 +58,8 @@ pipeline {
         stage('Promote') {
             agent any
             steps{
+                sh 'hostname'
+                sh 'whoami'
                 withCredentials([string(credentialsId: 'fa29894d-bf6a-49d6-97a7-5d30f879e8fb', variable: 'gh_token')]) {
                     sh '''
                         git checkout master

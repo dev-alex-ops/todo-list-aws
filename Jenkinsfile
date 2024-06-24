@@ -45,6 +45,7 @@ pipeline {
                     git checkout master
                     git pull
                     git merge develop
+                    git push
                 '''
             }
         }

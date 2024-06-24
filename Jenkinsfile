@@ -43,6 +43,7 @@ pipeline {
             steps{
                 sh '''
                     git checkout master
+                    git pull
                     git merge develop
                 '''
             }

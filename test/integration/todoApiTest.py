@@ -19,7 +19,8 @@ class TestApi(unittest.TestCase):
         print(BASE_URL)
         self.assertIsNotNone(BASE_URL, "URL no configurada")
         self.assertTrue(len(BASE_URL) > 8, "URL no configurada")
-
+        
+    @pytest.mark.write
     def test_api_listtodos(self):
         print('---------------------------------------')
         print('Starting - integration test List TODO')
@@ -50,6 +51,8 @@ class TestApi(unittest.TestCase):
         self.assertTrue(response.json())
         
         print('End - integration test List TODO')
+        
+    @pytest.mark.write
     def test_api_addtodo(self):
         print('---------------------------------------')
         print('Starting - integration test Add TODO')
@@ -75,6 +78,8 @@ class TestApi(unittest.TestCase):
             response.status_code, 200, "Error en la petición API a {url}"
         )
         print('End - integration test Add TODO')
+        
+    @pytest.mark.read
     def test_api_gettodo(self):
         print('---------------------------------------')
         print('Starting - integration test Get TODO')
@@ -113,6 +118,7 @@ class TestApi(unittest.TestCase):
         )
         print('End - integration test Get TODO')
     
+    @pytest.mark.read
     def test_api_updatetodo(self):
         print('---------------------------------------')
         print('Starting - integration test Update TODO')
@@ -166,6 +172,8 @@ class TestApi(unittest.TestCase):
             response.status_code, 200, "Error en la petición API a {url}"
         )
         print('End - integration test Update TODO')
+        
+    @pytest.mark.read
     def test_api_deletetodo(self):
         print('---------------------------------------')
         print('Starting - integration test Delete TODO')

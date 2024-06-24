@@ -9,5 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Versión inicial de código.
 - Prueba de merge contra master
 - Prueba de integración entre pipelines CI y CD
+- Prueba de integración de las nuevas pipelines con agentes distribuidos
 
 

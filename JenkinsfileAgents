@@ -36,7 +36,7 @@ pipeline {
                 sh '''
                     sam build
                     sam validate --region eu-east-1
-                    sam deploy --config-file samconfig.toml --config-env staging --no-fail-on-empty-changeset
+                    sam deploy --config-file samconfig.toml --no-fail-on-empty-changeset
                 '''
             }
         }

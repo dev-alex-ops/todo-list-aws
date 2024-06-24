@@ -10,5 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Prueba de merge contra master
 - Prueba de integración entre pipelines CI y CD
 - Prueba de integración de las nuevas pipelines con agentes distribuidos
+- Probando por qué se lanza dos veces el CI, no entiendo nada.
 
 

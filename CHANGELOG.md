@@ -8,5 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Versión inicial de código.
 - Prueba de merge contra master
+- Prueba de integración entre pipelines CI y CD
 
 

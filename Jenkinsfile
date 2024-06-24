@@ -41,12 +41,14 @@ pipeline {
         
         stage('Promote') {
             steps{
-                sh '''
-                    git checkout master
-                    git pull
-                    git merge develop
-                    git push
-                '''
+                withCredentials([string(credentialsId: 'fa29894d-bf6a-49d6-97a7-5d30f879e8fb', variable: 'gh_token')]) {
+                    sh '''
+                        git checkout master
+                        git pull
+                        git merge develop
+                        git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
+                    '''
+                }
             }
         }
     }

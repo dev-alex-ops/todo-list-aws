@@ -42,7 +42,6 @@ pipeline {
         stage('Promote') {
             steps{
                 sh '''
-                    git tag -a RC -m "Release version"
                     git checkout master
                     git merge develop
                 '''

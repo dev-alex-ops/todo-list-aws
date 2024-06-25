@@ -76,11 +76,7 @@ pipeline {
         stage ('Clean Workspace') {
             agent {label 'cleaner'}
             steps {
-                post { 
-                    always { 
-                        cleanWs()
-                    }
-                }
+                cleanWs deleteDirs: true, patterns: [[pattern: '**', type: 'INCLUDE']]
             }
         }
     }

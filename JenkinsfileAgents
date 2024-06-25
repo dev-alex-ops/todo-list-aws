@@ -72,5 +72,16 @@ pipeline {
                 }
             }
         }
+        
+        stage ('Clean Workspace') {
+            agent {label 'cleaner'}
+            steps {
+                post { 
+                    always { 
+                        cleanWs()
+                    }
+                }
+            }
+        }
     }
 }

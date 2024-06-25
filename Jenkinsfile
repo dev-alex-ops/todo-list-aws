@@ -5,6 +5,7 @@ pipeline {
         stage('Get Code') {
             steps{
                 git url: 'https://github.com/dev-alex-ops/todo-list-aws', branch: 'develop'
+                sh 'wget https://raw.githubusercontent.com/dev-alex-ops/todo-list-aws-config/staging/samconfig.toml'
             }
         }
 
@@ -49,6 +50,16 @@ pipeline {
                         git merge develop
                         git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
                     '''
+                }
+            }
+        }
+        
+        stage ('Clean Workspace') {
+            steps {
+                post { 
+                    always { 
+                        cleanWs()
+                    }
                 }
             }
         }

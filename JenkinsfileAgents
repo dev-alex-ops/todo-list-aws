@@ -72,5 +72,19 @@ pipeline {
                 }
             }
         }
+        
+        post { 
+            always { 
+                node ('Jenkins') {
+                    cleanWs()
+                } 
+                node ('Agent1') {
+                    cleanWs()
+                } 
+                node ('Agent2') {
+                    cleanWs()
+                } 
+            }
+        }
     }
 }

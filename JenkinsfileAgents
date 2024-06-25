@@ -33,6 +33,7 @@ pipeline {
             steps{
                 sh 'hostname'
                 sh 'whoami'
+                unstash 'repo'
                 sh '''
                     sam build
                     sam validate --region eu-east-1

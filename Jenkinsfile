@@ -56,11 +56,7 @@ pipeline {
         
         stage ('Clean Workspace') {
             steps {
-                post { 
-                    always { 
-                        cleanWs()
-                    }
-                }
+                cleanWs deleteDirs: true, patterns: [[pattern: '**', type: 'INCLUDE']]
             }
         }
     }

@@ -14,4 +14,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Última prueba para confirmar el funcionamiento de la distribución de agentes
 - Prueba para cubrir con JUnit también las pipelines sin distribuir
 - Se me olvidó poner los whoami y los hostname, así que jirgüigo
+- Prueba de la ejecución en agentes distribuidos del CI/CD, con la configuración en un repositorio externo (wget rawcontent)
 

@@ -74,19 +74,14 @@ pipeline {
         }
         
         stage ('Clean Workspace') {
-            post { 
-            always { 
-                node ('Jenkins') {
-                    cleanWs()
-                } 
-                node ('Agent1') {
-                    cleanWs()
-                } 
-                node ('Agent2') {
-                    cleanWs()
-                } 
+            agent {label 'cleaner'}
+            steps {
+                post { 
+                    always { 
+                        cleanWs()
+                    }
+                }
             }
-        }
         }
     }
 }

@@ -73,7 +73,8 @@ pipeline {
             }
         }
         
-        post { 
+        stage ('Clean Workspace') {
+            post { 
             always { 
                 node ('Jenkins') {
                     cleanWs()
@@ -85,6 +86,7 @@ pipeline {
                     cleanWs()
                 } 
             }
+        }
         }
     }
 }

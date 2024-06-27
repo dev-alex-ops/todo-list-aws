@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Get Code') {
             steps{
-                git url: 'https://github.com/dev-alex-ops/todo-list-aws', branch: [[name: '*/develop']]
+                git url: 'https://github.com/dev-alex-ops/todo-list-aws', branch: 'develop'
                 sh 'wget https://raw.githubusercontent.com/dev-alex-ops/todo-list-aws-config/staging/samconfig.toml'
             }
         }

@@ -6,3 +6,6 @@ pyenvunittests
 .coverage
 coverage.xml
 samconfig.toml
+bandit.out
+flake8.out
+junit-rest.xml

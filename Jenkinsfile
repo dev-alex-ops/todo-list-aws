@@ -54,6 +54,7 @@ pipeline {
                     
                     sh '''
                         git checkout master -- Jenkinsfile
+                        git add Jenkinsfile
                         git commit -am "Merge branch 'develop' into 'master' while keeping Jenkinsfile from master"
                         git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
                     '''

@@ -47,7 +47,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'fa29894d-bf6a-49d6-97a7-5d30f879e8fb', variable: 'gh_token')]) {
                     sh 'rm junit-rest.xml flake8.out bandit.out'
                     sh 'git checkout master'
-                    sh 'git pull'
+                    sh 'git pull origin master'
                     
                     catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
                         sh 'git merge --no-commit develop'

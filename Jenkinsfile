@@ -4,23 +4,12 @@ pipeline {
     stages {
         stage('Get Code') {
             steps{
-                git url: 'https://github.com/dev-alex-ops/todo-list-aws', branch: 'master'
+                git url: 'https://github.com/dev-alex-ops/todo-list-aws'
                 sh 'wget https://raw.githubusercontent.com/dev-alex-ops/todo-list-aws-config/production/samconfig.toml'
             }
         }
 
-        stage('Static Test') {
-            steps{
-                sh '''
-                    python -m flake8 --format=pylint --exit-zero src > flake8.out
-                    python -m bandit --exit-zero -r src -f custom -o bandit.out --severity-level medium --msg-template "{abspath}:{line}: [{test_id}] {msg}"
-                '''
-                recordIssues tools: [flake8(pattern: 'flake8.out')]
-                recordIssues tools: [pyLint(name: 'Bandit', pattern: 'bandit.out')]
-            }
-        }
-
-        stage('SAM') {
+        stage('Deploy') {
             steps{
                 sh '''
                     sam build

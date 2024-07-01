@@ -17,3 +17,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Prueba de la ejecución en agentes distribuidos del CI/CD, con la configuración en un repositorio externo (wget rawcontent)
 - Prueba de pipeline multibranch
 - Prueba de integración con los nuevos jenkinsfiles de las ramas en agente master
+- Otra prueba más, a ver si funciona

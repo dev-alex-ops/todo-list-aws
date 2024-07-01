@@ -47,7 +47,10 @@ pipeline {
                 withCredentials([string(credentialsId: 'fa29894d-bf6a-49d6-97a7-5d30f879e8fb', variable: 'gh_token')]) {
                     sh '''
                         git checkout master
-                        git merge develop
+                        git merge --no-commit develop
+                        git checkout --ours Jenkinsfile
+                        git add Jenkinsfile
+                        git commit -m "Merge branch 'develop' into 'master' while keeping Jenkinsfile from master"
                         git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
                     '''
                 }

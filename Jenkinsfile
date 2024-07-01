@@ -48,13 +48,14 @@ pipeline {
                     sh 'git checkout master'
                     
                     catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
-                        sh '''
-                            git merge --no-commit develop
-                            git checkout master -- Jenkinsfile
-                            git commit -am "Merge branch 'develop' into 'master' while keeping Jenkinsfile from master"
-                            git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
-                        '''
+                        sh 'git merge --no-commit develop'
                     }
+                    
+                    sh '''
+                        git checkout master -- Jenkinsfile
+                        git commit -am "Merge branch 'develop' into 'master' while keeping Jenkinsfile from master"
+                        git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
+                    '''
                 }
             }
         }

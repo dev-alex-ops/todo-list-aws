@@ -63,10 +63,15 @@ pipeline {
                 sh 'hostname'
                 sh 'whoami'
                 withCredentials([string(credentialsId: 'fa29894d-bf6a-49d6-97a7-5d30f879e8fb', variable: 'gh_token')]) {
+                    sh 'git checkout master'
+                    
+                    catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                        sh 'git merge --no-commit develop'
+                    }
+                    
                     sh '''
-                        git pull origin master
-                        git checkout master
-                        git merge develop
+                        git checkout master -- JenkinsfileAgents
+                        git commit -am "Merge branch 'develop' into 'master' while keeping JenkinsfileAgents from master"
                         git push https://dev-alex-ops:$gh_token@github.com/dev-alex-ops/todo-list-aws.git
                     '''
                 }
